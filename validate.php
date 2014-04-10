@@ -1,14 +1,8 @@
 <!--
-Name: Alex Valickis
+Name: Alex Valickis, Jonathan Hodder
 Date: April 4th 2014
-Purpose: validate page
+Purpose: validate login information from the login form
 -->
-
-<html>
- <head>
-  <title>validate</title>
- </head>
- <body>
 <?php
 	session_start();
 	$host="localhost"; // Host name 
@@ -37,18 +31,15 @@ Purpose: validate page
 	$count=mysql_num_rows($result);
 	
 	// If result matched $myusername and $mypassword, table row must be 1 row
-	if($count==1){
-		
+	if($count==1){		
 		// Create session variable for logged in user
 		$_SESSION['user'] = 'Yes';
-	
-	// Redirect to file "ContactList.php"
-	header("location:index.php");
+		$_SESSION['username'] = $myusername;	
+		// Redirect to file "ContactList.php"
+		header("location:index.php");
 	}
 	// If the user doesn't have the correct creds
 	else {
-	echo "Wrong Username or Password";
+		echo "Wrong Username or Password";
 	}
 ?>
-</body>
-</html>

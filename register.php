@@ -1,15 +1,15 @@
 <!doctype html>
 <!--
-Name: Alex Valickis
+Name: Alex Valickis, Jonathan Hodder
 Date: April 4th 2014
-Purpose: login page
+Purpose: register new user form page
 -->
 <html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- Page Tittle -->
-		<title>Login | Alex's Portfolio</title>
+		<title>Register</title>
 		<link rel="stylesheet" href="css/foundation.css" />
 		<script src="js/modernizr.js"></script>
 		<script src="js/jquery.js"></script>
@@ -18,7 +18,12 @@ Purpose: login page
 			$(document).foundation();
 		</script>
 	</head>
-	<body>
+	<?php
+		if(isset($_SESSION["user"])){ 
+			header('location: index.php');
+		}
+	?>
+    <body>
 		<div class="row">
 			<div class="large-10">
 				<!-- Nav Bar and links -->
@@ -26,9 +31,6 @@ Purpose: login page
 					<ul>
 						<li>
 							<a href="index.php" id="navHome">Home</a>
-						</li>
-						<li>
-							<a href="" id="navAbout">Another Link</a>
 						</li>
 						<li>
 							<a href="login.php" id="navLogin">Login</a>
@@ -40,7 +42,7 @@ Purpose: login page
 		<div class="row">
 			<!-- Page Content -->
 			<div class="large-12 columns">
-				<h1>User Login</h1>
+				<h1>User Regester</h1>
 			</div>
 		</div>
 
@@ -51,13 +53,13 @@ Purpose: login page
 					<div class="large-4 columns">
 						<form name="registerForm" method="post" action="registerUser.php">
 							<label>Username:
-								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt"/>
+								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt" required/>
 							</label>
 							<label>Password:
-								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt"/>
+								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt" required/>
 							</label>
 							<label>Email:
-								<input type="email" placeholder="Email" id="emailtxt" name="emailtxt"/>
+								<input type="email" placeholder="Email" id="emailtxt" name="emailtxt" required/>
 							</label>
 							<label>Role:
 								<select name='roletxt'>

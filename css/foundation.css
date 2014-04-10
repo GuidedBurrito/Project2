@@ -4991,7 +4991,7 @@ th.hide-for-touch {
   .nav ul li a {
   display: block;
   text-decoration: none;
-  padding: 7px 15px 3px 15px;
+  padding: 7px 300px 3px 15px;
   background: #1F7994;
   color: #ffffff;  
   margin-left: 1px;
@@ -5001,12 +5001,11 @@ th.hide-for-touch {
   text-align:center;
   }
 
-body#home a#navHome,
-body#project a#navProject,
-body#services a#navServices,
-body#contact a#navContact,
-body#github a#navGit,
-body#about a#navAbout {
+body a#navHome,
+body a#navUpdate,
+body a#navLogin,
+body a#navlogout,
+{
 	color: #FFFFFF;
 	background: #134B5B;
 }
