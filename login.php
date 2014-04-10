@@ -53,10 +53,10 @@ Purpose: login form page if you don't a have a login go to the register page
 					<div class="large-4 columns">
 						<form name="form1" method="post" action="validate.php">
 							<label>Username:
-								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt" required/>
+								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt" maxlength="20" required/>
 							</label>
 							<label>Password:
-								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt" required/>
+								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt" maxlength="20" required/>
 							</label>
 						<br/>
 						<input type="submit" name="Submit" value="Login">

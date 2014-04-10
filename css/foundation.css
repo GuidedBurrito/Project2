@@ -4985,13 +4985,15 @@ th.hide-for-touch {
   .nav ul li {
   display: block;
   position: relative;
+  text-align:center;
   float: left;
   }
   
   .nav ul li a {
   display: block;
   text-decoration: none;
-  padding: 7px 300px 3px 15px;
+  text-align:center;
+  padding: 7px 120px 3px 15px;
   background: #1F7994;
   color: #ffffff;  
   margin-left: 1px;
@@ -5002,7 +5004,7 @@ th.hide-for-touch {
   }
 
 body a#navHome,
-body a#navUpdate,
+body #navUpdate,
 body a#navLogin,
 body a#navlogout,
 {

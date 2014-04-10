@@ -49,7 +49,7 @@ Purpose: Update user profile
 			$email = $_POST['email'];
 			$role = $_POST['role'];
 			echo $password;
-			$sql = "UPDATE $tbl_name SET password = '" . $pass . "', email = '" . $email . "', type = '$role'  WHERE username = '$myusername '" or die("cannot update database");
+			$sql = "UPDATE $tbl_name SET password = '" . $pass . "', email = '" . $email . "', type = '". $role . "'  WHERE username = '$myusername '" or die("cannot update database");
 			$result = mysql_query($sql);
 
 			if ($result){
@@ -85,16 +85,15 @@ Purpose: Update user profile
 					<!--Form -->
 					<form name="insert" method="post"><br>
 						<label>Username:
-							<input disabled type="text" name="username" id="inputtype" value="<?php echo $myusername; ?>">
-						
+							<input disabled type="text" name="username" maxlength="20" id="inputtype" value="<?php echo $myusername; ?>">
 						<label>Change Password: 
-							<input required type="text" name="password" id="inputtype" value="<?php echo $pass; ?>">
+							<input required type="text" name="password" maxlength="20" id="inputtype" value="<?php echo $pass; ?>">
 						</label>
-						<label>EmailAddress:
-							<input required type="text" name="email" id="inputtype" value="<?php echo $email; ?>">
+						<label>Email Address:
+							<input required type="email" name="email" maxlength="60" id="inputtype" value="<?php echo $email; ?>">
 						</label>
 						<label>Role:
-							<select name='roletxt'>
+							<select name='role'>
 								<option value="user">User</option>
 								<option value="admin">Admin</option>
 							</select> 

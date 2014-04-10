@@ -9,7 +9,7 @@ Purpose: register new user form page
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- Page Tittle -->
-		<title>Register</title>
+		<title>New Ticket</title>
 		<link rel="stylesheet" href="css/foundation.css" />
 		<script src="js/modernizr.js"></script>
 		<script src="js/jquery.js"></script>
@@ -33,7 +33,7 @@ Purpose: register new user form page
 							<a href="index.php" id="navHome">Home</a>
 						</li>
 						<li>
-							<a href="login.php" id="navLogin">Login</a>
+							<a href="logout.php" id="navLogout">Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -42,7 +42,7 @@ Purpose: register new user form page
 		<div class="row">
 			<!-- Page Content -->
 			<div class="large-12 columns">
-				<h1>User Regester</h1>
+				<h1>New Ticket</h1>
 			</div>
 		</div>
 
@@ -51,24 +51,27 @@ Purpose: register new user form page
 				<!-- login form -->
 				<div class="panel">
 					<div class="large-4 columns">
-						<form name="registerForm" method="post" action="registerUser.php">
-							<label>Username:
-								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt" maxlength="20" required/>
+						<form name="TicketForm" method="post" action="submitTicket.php">
+							<label>Incident Description:
+								<input type="text" placeholder="Breif Description" id="description" name="description" maxlength="50" required/>
 							</label>
-							<label>Password:
-								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt" maxlength="20" required/>
+							<label>Customer Name:
+								<input type="text" placeholder="Customer Name...." id="customer" name="customer" maxlength="20" required/>
 							</label>
-							<label>Email:
-								<input type="email" placeholder="Email" id="emailtxt" name="emailtxt" maxlength="60" required/>
-							</label>
-							<label>Role:
-								<select name='roletxt'>
-									<option value="user">User</option>
-									<option value="admin">Admin</option>
+                            <label>Incident Priority:
+								<select name='priority'>
+									<option value="Urgent">Urgent</option>
+									<option value="Critical">Critical</option>
+                                    <option value="Moderate">Moderate</option>
+									<option value="Minor">Minor</option>
 								</select> 
 							</label>
+							<label>What Happend?:
+								<textarea type="text" placeholder="Description of what happened...." id="narrative" name="narrative" cols="60" rows="10" required></textarea>
+							</label>
+							
 							<br/>
-							<input type="submit" name="Resgister" value="Register">
+							<input type="submit" name="add" value="Create New Ticket">
 						</form>
 					</div>
 					<br/>
@@ -92,11 +95,7 @@ Purpose: register new user form page
 					<br/>
 					<br/>
 				</div>
-				<div class="panel">
-					<p>
-						OR if you already have an account <a href="login.php">LOGIN</a>!
-					</p>
-				</div>
 			</div>
 		</div>
 	</body>
+</html>
