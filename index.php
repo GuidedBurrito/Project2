@@ -47,7 +47,7 @@ Purpose: Show the incident tickets to users
 			mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
 			mysql_select_db("$db_name")or die("cannot select DB");
 			
-			$sqlSelect = "SELECT * FROM $tbl_name";
+			$sqlSelect = "SELECT * FROM $tbl_name ORDER BY ticketID ASC";
 			$selectResult = mysql_query($sqlSelect)or die(mysql_error());	
 			
 			echo "		
@@ -70,6 +70,11 @@ Purpose: Show the incident tickets to users
 	?>
 				</div>
 			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+
 			<div class="large-8 columns">
 				<div class="callout panel">
 					<h2>Incident Tickets</h2><hr>
