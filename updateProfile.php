@@ -20,9 +20,12 @@ Purpose: Update user profile
 	</head>
 	<?php
 		session_start();
-		if(!isset($_SESSION["user"])){ 
+		//if the user is not logged in throw them to the login page
+		if(!isset($_SESSION["user"]))
+		{ 
 			header('location: login.php');
 		}
+		//create and assign variables
 		$host="localhost"; // Host name 
 		$username="db200203673"; // username 
 		$password="80087"; // password 
@@ -32,29 +35,30 @@ Purpose: Update user profile
 		// Connect to server and select database.
 		mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
 		mysql_select_db("$db_name")or die("cannot select DB");
-			
-		$myusername = $_SESSION['username']; 
-		//$select = "SELECT * FROM $tbl_name WHERE username='$myusername'";
-		$object = mysql_query("SELECT * FROM $tbl_name WHERE username='$myusername'");
-		//assign database values to the username
-		while ($row = mysql_fetch_assoc($object)) {
-		$myusername=$row['username'];
-		$pass=$row['password'];
-		$email=$row['email'];
-		$role=$row['type'];}
 		
+		//assign username the session username value
+		$myusername = $_SESSION['username']; 
+		$object = mysql_query("SELECT * FROM $tbl_name WHERE username='$myusername'");
+		//assign database values to the variables
+		while ($row = mysql_fetch_assoc($object)) 
+		{
+			$myusername=$row['username'];
+			$pass=$row['password'];
+			$email=$row['email'];
+			$role=$row['type'];
+		}
+		//when you update the profile
 		if(isset($_POST['insert'])) 
 		{
+			//assign the entered form values to variables
 			$pass = $_POST['password'];
 			$email = $_POST['email'];
 			$role = $_POST['role'];
-			echo $password;
+			//update the database with the form values
 			$sql = "UPDATE $tbl_name SET password = '" . $pass . "', email = '" . $email . "', type = '". $role . "'  WHERE username = '$myusername '" or die("cannot update database");
 			$result = mysql_query($sql);
-
-			if ($result){
-				$success = '<p> Profile Updated!</p>';
-			}
+			//tells user that the profile has been updated
+			echo '<script type="text/javascript"> alert("Profile Updated")</script>';
 		}
 	?>
 	<body>
@@ -74,7 +78,7 @@ Purpose: Update user profile
 			</div>
 		</div>
 		<div class="row">
-			<!-- Page Content -->
+			<!-- Page Header -->
 			<div class="large-12 columns">
 				<h1>Update Profile</h1>
 			</div>
@@ -82,25 +86,28 @@ Purpose: Update user profile
 		<div class="row">
 			<div class="large-4 columns">	
 				<div class="panel">
-					<!--Form -->
+					<!--Username Form -->
 					<form name="insert" method="post"><br>
+						<!--Username Disabled Field-->
 						<label>Username:
 							<input disabled type="text" name="username" maxlength="20" id="inputtype" value="<?php echo $myusername; ?>">
+						<!--Password Required Field-->
 						<label>Change Password: 
 							<input required type="text" name="password" maxlength="20" id="inputtype" value="<?php echo $pass; ?>">
 						</label>
+						<!--Email Address Required Field-->
 						<label>Email Address:
 							<input required type="email" name="email" maxlength="60" id="inputtype" value="<?php echo $email; ?>">
 						</label>
+						<!--Role Drop Down List-->
 						<label>Role:
 							<select name='role'>
-								<option value="user">User</option>
-								<option value="admin">Admin</option>
+								<option <?php if ($role == 'user'){echo "selected='selected'";} ?> value="user">User</option>
+								<option <?php if ($role == 'admin'){echo "selected='selected'";} ?> value="admin">Admin</option>
 							</select> 
 						</label>
-						<p><input type="submit" id="inputsubmit" name="insert" value="Save" id="save" width="10px"></p> <br />
+						<p><input type="submit" id="inputsubmit" name="insert" value="Save" id="save"></p> <br />
 					</form>
-					<form method='post' action='updateProfile.php'></form>
 				</div>
 			</div>
 		</div>	

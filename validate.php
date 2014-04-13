@@ -5,6 +5,7 @@ Purpose: validate login information from the login form
 -->
 <?php
 	session_start();
+	//create and assign new varaibles
 	$host="localhost"; // Host name 
 	$username="db200203673"; // username 
 	$password="80087"; // password 
@@ -31,15 +32,18 @@ Purpose: validate login information from the login form
 	$count=mysql_num_rows($result);
 	
 	// If result matched $myusername and $mypassword, table row must be 1 row
-	if($count==1){		
+	if($count==1)
+	{		
 		// Create session variable for logged in user
 		$_SESSION['user'] = 'Yes';
-		$_SESSION['username'] = $myusername;	
-		// Redirect to file "ContactList.php"
-		header("location:index.php");
+		$_SESSION['username'] = $myusername;
+		header('location: index.php');		
 	}
-	// If the user doesn't have the correct creds
-	else {
-		echo "Wrong Username or Password";
+	// If the user doesn't have the correct information
+	else
+	{
+		echo '<script type="text/javascript"> alert("The Username and Password are Invalid. Please enter valid login information")</script>';
 	}
+	// Redirect to file "login.php"
+	echo '<script type="text/javascript">window.location.href = "login.php";</script>'
 ?>

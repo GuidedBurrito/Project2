@@ -4982,28 +4982,19 @@ th.hide-for-touch {
   	background:#A0D3E8;
   	
   }
-  
   .nav ul li {
   display: block;
   position: relative;
-  text-align:center;
   float: left;
   }
-  
-  td {
-  	colour: rgb(0,0,255);
-  }
-  
   
   .nav ul li a {
   display: block;
   text-decoration: none;
-  text-align:center;
-  padding: 7px 200px 3px 15px;
+  padding: 7px 60px 3px 15px;
   background: #1F7994;
   color: #ffffff;  
   margin-left: 1px;
-  margin-bottom: 1px;
   white-space: nowrap;
   height:30px; /* Width and height of top-level nav items */
   width:110px;
@@ -5011,7 +5002,7 @@ th.hide-for-touch {
   }
 
 body a#navHome,
-body #navUpdate,
+body a#navUpdate,
 body a#navLogin,
 body a#navlogout,
 {

@@ -19,13 +19,15 @@ Purpose: login form page if you don't a have a login go to the register page
 		</script>
 	</head>
     <?php
-		if(isset($_SESSION["user"])){ 
+		//if the user is already logged in you are thrown back to the index page
+		if(isset($_SESSION["user"]))
+		{ 
 			header('location: index.php');
 		}
 	?>
 	<body>
 		<div class="row">
-			<div class="large-10">
+			<div class="large-12">
 				<!-- Nav Bar and links -->
 				<div class="nav">
 					<ul>
@@ -40,34 +42,36 @@ Purpose: login form page if you don't a have a login go to the register page
 			</div>
 		</div>
 		<div class="row">
-			<!-- Page Content -->
+			<!-- Page Header -->
 			<div class="large-12 columns">
 				<h1>User Login</h1>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="large-12 columns">
+			<div class="large-6 columns">
 				<!-- login form -->
 				<div class="panel">
-					<div class="large-4 columns">
-						<form name="form1" method="post" action="validate.php">
+					<div class="large-10 columns">
+						<!--When you submit the login form you are directed to the validate page-->
+						<form name="login" method="post" action="validate.php">
+							<!--Username Required Field-->
 							<label>Username:
 								<input type="text" placeholder="Username" id="usernametxt" name="usernametxt" maxlength="20" required/>
 							</label>
+							<!--Password Required Field-->
 							<label>Password:
 								<input type="password" placeholder="Password" id="passwordtxt" name="passwordtxt" maxlength="20" required/>
 							</label>
-						<br/>
-						<input type="submit" name="Submit" value="Login">
+							<br/>
+							<input type="submit" name="Submit" value="Login">
 						</form>
 					</div>
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</div>
 				<div class="panel">
-					<p>
-						OR if you dont have an account <a href="register.php">REGISTER</a>!
-					</p>
+					<!--Create a register link for new users-->
+					<p>OR if you dont have an account <a href="register.php">REGISTER</a>!</p>
 				</div>
 			</div>
 		</div>
