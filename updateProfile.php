@@ -80,7 +80,7 @@ Purpose: Update user profile
 		<div class="row">
 			<!-- Page Header -->
 			<div class="large-12 columns">
-				<h1>Update Profile</h1>
+				<h1>Update Profile<img border="0" src="logo.png" alt="logo" width="225" height="150" /></h1>
 			</div>
 		</div>
 		<div class="row">

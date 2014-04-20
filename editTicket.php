@@ -69,10 +69,11 @@ Purpose: update incident ticket
 			$status = $_POST['status'];
 			
 			// Add updated narrative to previous entries
-			$narrativetxt= $prevNarrativetxt . " " . $_POST['narrative'];
+			$narrativetxt= $prevNarrativetxt . "\n" . $_POST['narrative'];
+			$resolutiontxt = $_POST['txtRes'];
 			
 			// Update statement
-			$sql = "UPDATE $tbl_name SET incidentPriority = '" . $prioritytxt . "', incidentNarrative = '". $narrativetxt . "', incidentStatus = '". $status . "' WHERE ticketID = '$ticketId'"; 
+			$sql = "UPDATE $tbl_name SET incidentPriority = '" . $prioritytxt . "', incidentNarrative = '". $narrativetxt . "', incidentStatus = '". $status . "', incidentResolution = '" . $resolutiontxt . "' WHERE ticketID = '$ticketId'"; 
 			
 			// Run SQL statement
 			mysql_query($sql);
@@ -100,7 +101,7 @@ Purpose: update incident ticket
 		<div class="row">
 			<!-- Page Content -->
 			<div class="large-12 columns">
-				<h1>Update Ticket</h1>
+				<h1>Update Ticket<img border="0" src="logo.png" alt="logo" width="225" height="150" /></h1>
 			</div>
 		</div>
 
@@ -132,19 +133,36 @@ Purpose: update incident ticket
 								<textarea type="text" placeholder="Description of what happened...." id="narrative" name="narrative" cols="60" rows="10" required></textarea>
 							</label>
 							<label>Status:
-								<select name='status'>
+								<select name='status' id="StatusDrop" onChange="showText(this.selectedIndex);">
 									<option <?php if ($status == 'New'){echo "selected='selected'";} ?> value="New">New</option>
 									<option <?php if ($status == 'In-Progress'){echo "selected='selected'";} ?> value="In-Progress">In-Progress</option>
 									<option <?php if ($status == 'Dispatched'){echo "selected='selected'";} ?> value="Dispatched">Dispatched</option>
 									<option <?php if ($status == 'Closed'){echo "selected='selected'";} ?> value="Closed">Closed</option>
 								</select>
 							</label>
+							<label id="lblRes" style="display:none">How It Was Resolved:
+								<textarea type="text" placeholder="How It Was Resolved...." id="txtRes" name="txtRes" cols="60" rows="10" style="display:none"></textarea>
+							</label>
+							<!-- Function to show hidden form elements -->
+							<script>
+  									function showText(ind){
+									var selectBox = document.getElementById('StatusDrop');
+									if(selectBox.options[ind].value=="Closed"){
+										document.getElementById('lblRes').style.display = "block";
+										document.getElementById('txtRes').style.display = "block";
+									  }
+									else{
+										document.getElementById('lblRes').style.display = "none";
+										document.getElementById('txtRes').style.display = "none";
+										}
+									}
+							</script>
 							<br/>
 							<!-- Save button -->
 							<input type="submit" id="inputsubmit" name="updateTicketInfo" value="Save" id="save">
 						</form>
 					</div>
-					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</div>
 			</div>
 		</div>

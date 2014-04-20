@@ -49,7 +49,7 @@ Purpose: Show the incident tickets to logged in users
 			mysql_select_db("$db_name")or die("cannot select DB");
 			
 			//select all the incident tickets and order by the ticket id
-			$sqlSelect = "SELECT * FROM $tbl_name ORDER BY ticketID ASC";
+			$sqlSelect = "SELECT * FROM $tbl_name ORDER BY incidentStatus DESC, ticketID ASC;";
 			$selectResult = mysql_query($sqlSelect)or die(mysql_error());	
 			//load up the navigation links
 			echo "		
@@ -76,7 +76,9 @@ Purpose: Show the incident tickets to logged in users
 			<div class="large-11 columns">
 				<div class="callout panel">
 					<!--Incident Tickets Header-->
-					<h2>Incident Tickets</h2><hr>
+					<h2>Incident Tickets <img border="0" src="logo.png" alt="logo" width="225" height="150" /></h2></br>
+					<b>Ticket ID &nbsp &nbsp | &nbsp &nbsp Ticket Description &nbsp &nbsp |&nbsp &nbsp Status &nbsp &nbsp |&nbsp &nbsp Resolution</b>
+					<hr>
 					<?php
 						//if you are logged in load the incident tickets
 						if(isset($_SESSION["user"]))
@@ -86,17 +88,18 @@ Purpose: Show the incident tickets to logged in users
 								$incidentNum = $row['ticketID'];
 								$incidentDesc = $row['incidentDescription'];
 								$status = $row['incidentStatus'];
+								$Resolution = $row['incidentResolution'];
 								$_SESSION['ticketID'] = $incidentNum;
 								$newURL = "editTicket.php?id=" . $incidentNum;
 								//if the status is set to closed de-activate the incident tickets
 								if($status == "Closed")
 								{
-									echo"<h5><table><tr><td>$incidentNum</td><td>$incidentDesc</td><td>$status</td></tr></table></h5> <hr>";
+									echo"<h5><table><tr><td>$incidentNum</td><td>$incidentDesc</td><td>$status</td><td>$Resolution</td></tr></table></h5> <hr>";
 								}
 								else
 								{
 									// For each name in the database populate them
-									echo"<h5><a href='" . $newURL . "'><table><tr><td>$incidentNum</td><td>$incidentDesc</td><td>$status</td></tr></table></a></h5>";
+									echo"<h5><a href='" . $newURL . "'>$incidentNum &nbsp &nbsp &nbsp $incidentDesc &nbsp &nbsp &nbsp $status</a></h5>";
 									echo"<hr>";
 								}
 							} 

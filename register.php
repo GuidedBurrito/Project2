@@ -44,7 +44,7 @@ Purpose: register new user form page
 		<div class="row">
 			<!-- Page Header -->
 			<div class="large-12 columns">
-				<h1>User Regester</h1>
+				<h1>User Regester<img border="0" src="logo.png" alt="logo" width="225" height="150" /></h1>
 			</div>
 		</div>
 
